@@ -81,8 +81,9 @@ class UniteGalleryTwigExtension extends \Twig_Extension
       is_null($gallery_div_id) && $gallery_div_id = $this->gallery_div_id;
       is_null($gallery_div_id) && $gallery_div_id = "unite-gallery";
 
-      return $this->buildImagesDiv($images, $gallery_div_id)
-              . $this->buildGalleryScript($gallery_options, $gallery_div_id);
+      $this->grav['assets']->addInlineJs($this->buildGalleryScript($gallery_options, $gallery_div_id));
+
+      return $this->buildImagesDiv($images, $gallery_div_id);
     }
 
     /**
@@ -157,11 +158,9 @@ class UniteGalleryTwigExtension extends \Twig_Extension
      */
     protected function buildGalleryScript($gallery_options, $gallery_div_id = 'unite-gallery')
     {
-      return '<script type="text/javascript">
-              jQuery(document).ready(function(){
+      return 'jQuery(document).ready(function(){
                 jQuery("#' . $gallery_div_id . '").unitegallery('.json_encode($gallery_options).');
-              });
-        </script>' . PHP_EOL;
+              });';
     }
 
     /**
