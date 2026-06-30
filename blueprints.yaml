@@ -1,5 +1,5 @@
 name: Unitegallery
-version: 1.1.4
+version: 1.1.4-1
 description: This plugin adds twig function to create media galleries using Unitegallery js library
 icon: th-large
 author:
@@ -9,6 +9,12 @@ homepage: https://github.com/variar/grav-plugin-unitegallery
 bugs: https://github.com/variar/grav-plugin-unitegallery/issues
 license: MIT
 keywords: gallery, images, unitegallery
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }
+
+compatibility:
+  grav: ['1.7', '2.0' ]
 
 form:
   validation: strict
