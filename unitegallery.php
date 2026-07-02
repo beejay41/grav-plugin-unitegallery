@@ -2,6 +2,7 @@
 namespace Grav\Plugin;
 use Grav\Common\Grav;
 use Grav\Common\Plugin;
+use RocketTheme\Toolbox\Event\Event;
 
 class UniteGalleryPlugin extends Plugin
 {
