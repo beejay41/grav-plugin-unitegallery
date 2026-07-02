@@ -12,6 +12,7 @@ class UniteGalleryPlugin extends Plugin
     {
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
+             'onBuildTwigSandboxPolicy' => ['onBuildTwigSandboxPolicy', 0],
         ];
     }
 
@@ -82,5 +83,13 @@ class UniteGalleryPlugin extends Plugin
           $this->grav['assets']->addCss($css);
         }
       }
+    }
+
+    public function onBuildTwigSandboxPolicy(Event $event): void
+    {
+      // Allow this plugin's Twig function inside sandboxed page content.
+      $functions = $event['functions'];
+      $functions[] = 'unite_gallery';
+      $event['functions'] = $functions;
     }
 }
